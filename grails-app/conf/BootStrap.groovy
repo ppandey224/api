@@ -11,7 +11,7 @@ class BootStrap {
 
         def userRole=Role.findByAuthority(APIConstants.ROLE_USER)?:new Role(authority: APIConstants.ROLE_USER).save(flush: true)
 
-        def testAdmin = User.findByUsername('admin')?:new User(id: '1', username: 'admin', enabled: true, password: 'admin').save(flush: true)
+        def testAdmin = User.findByUsername('admin')?:new User(id: '1', username: 'admin', enabled: true, password: 'admin', email: 'begnas.api@gmail.com').save(flush: true)
 
         if (!testAdmin.authorities.contains(adminRole)) {
             UserRole.create testAdmin,adminRole
