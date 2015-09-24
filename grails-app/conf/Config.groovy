@@ -149,8 +149,26 @@ grails.plugin.springsecurity.interceptUrlMap = [
         '/logout':          ['permitAll'],
         '/logout/**':       ['permitAll'],
         '/options/**':      ['ROLE_ADMIN'],
+        '/user/**':         ['ROLE_ADMIN'],
+        '/role/**':         ['ROLE_ADMIN'],
+        '/registrationcode/**': ['ROLE_ADMIN'],
+        '/securityinfo/**':     ['ROLE_ADMIN']
 ]
 
 grails.plugin.springsecurity.auth.loginFormUrl = '/login/'
 grails.plugin.springsecurity.logout.afterLogoutUrl='/login/'
 grails.plugin.springsecurity.ui.register.postRegisterUrl = '/register/registrationMessage'
+
+grails {
+    mail {
+        host = "smtp.gmail.com"
+        port = 465
+        username = "begnas.api@gmail.com" //created new account
+        password = "begnas.api!@#"
+        props = ["mail.smtp.auth":"true",
+                 "mail.smtp.socketFactory.port":"465",
+                 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                 "mail.smtp.socketFactory.fallback":"false"]
+    }
+}
+
