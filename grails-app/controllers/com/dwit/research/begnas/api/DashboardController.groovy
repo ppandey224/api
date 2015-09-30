@@ -13,9 +13,9 @@ class DashboardController {
             String option3=params.option3
             String option4=params.option4
 
-            Integer correct=(params.correct_answer).toBigInteger()
+            Integer correct=(params.correct_answer).toInteger()
 
-            Integer subjectId=(params.questionSubject).toBigInteger()
+            Integer subjectId=(params.questionSubject).toInteger()
             def subj=Subject.get(subjectId)
 
             Question ques=new Question()
@@ -30,7 +30,7 @@ class DashboardController {
 
     def addToQuestionRel(Question ques, String question, Subject subj){
         ques.question=question
-        ques.subjectId=subj
+        ques.subject=subj
         ques.save()
     }
 
@@ -39,12 +39,12 @@ class DashboardController {
         opt.option2=option2
         opt.option3=option3
         opt.option4=option4
-        opt.questionId=ques
+        opt.question=ques
         opt.save()
     }
 
     def addToCorrectAnswerRel(CorrectAnswer correctOpt, Question ques, Integer correct){
-        correctOpt.questionId=ques
+        correctOpt.question=ques
         correctOpt.correctOption=correct
         correctOpt.save()
     }
