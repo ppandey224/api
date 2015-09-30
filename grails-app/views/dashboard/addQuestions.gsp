@@ -8,25 +8,30 @@
 <%@ page import="com.dwit.research.begnas.api.Subject" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title></title>
+    <title>Add Questions</title>
 </head>
 <body>
 
 <g:form action="addQuestions" controller="dashboard" method="post">
+
     Question: <g:textArea name="question" required="required"/> <br/>
-    Option 1: <g:textField name="option1" required="required"/> <br/>
-    Option 2: <g:textField name="option2" required="required"/> <br/>
-    Option 3: <g:textField name="option3" required="required"/><br/>
-    Option 4: <g:textField name="option4" required="required"/><br/><br/>
+
+    <!--For Options-->
+    <g:each in="${(1..<5)}" var="i">
+        Option ${i} : <g:textField name="option${i}" required="required" class="options"/> <br/>
+    </g:each>
+
     Subject: <g:select name="questionSubject"
                           from="${com.dwit.research.begnas.api.Subject.list()}"
                           optionValue="subject"
                           optionKey="id" noSelection="['':'Choose Subject']" required="required"/>
     <br/><br/>
+
     <em>Correct Answer: </em><br/>
-    <g:radioGroup values="['1', '2', '3', '4']" labels="['Option 1', 'Option 2', 'Option 3', 'Option 4']" name="correct_answer" required="required">
-        <p>${it.label} ${it.radio}</p>
-    </g:radioGroup>
+    <!--For correct answer-->
+    <g:each in="${(1..<5)}" var="i">
+        <input type="radio" name="correct_answer" value="${i}" id="rdo_option${i}"/> <label for="rdo_option${i}">Option ${i}</label><br/>
+    </g:each>
 
     <g:submitButton name="Next"/>
 </g:form>
