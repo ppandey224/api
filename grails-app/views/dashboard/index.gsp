@@ -12,6 +12,9 @@
 </head>
 
 <body>
- The eagle has landed!!!
+ The eagle has landed!!! <br/>
+<g:link controller="dashboard" action="addQuestions"> Add Questions </g:link><br/>
+<g:link controller="subject" action="index"> Subjects </g:link><br/>
+<g:link controller="dashboard" action="listQuestions"> Questions </g:link><br/>
 </body>
 </html>
