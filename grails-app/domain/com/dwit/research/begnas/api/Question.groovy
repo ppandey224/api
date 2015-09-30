@@ -4,17 +4,8 @@ class Question {
 
     String question
     Boolean isSkipped = false
+    Subject subject
 
-    static hasMany = [options: Options]
-    //Boolean enabled
-
-    static constraints={
-        question(nullable: false, unique: true)
-        isSkipped()
+    static constraints = {
     }
-
-    String toString(){
-        return "${question}"
-    }
-
 }
